@@ -25,6 +25,14 @@ const Auth = () => {
         handleShowPassword(false);
     }
 
+    const googleSuccess = (res) => {
+        console.log(res);
+    }
+
+    const googleError = () => {
+        console.log("Google Sign In was Unsuccessful. Try again later");
+    }
+
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword )
 
     return (
@@ -40,7 +48,7 @@ const Auth = () => {
                             isSignup && (
                                 <>
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-                                    <Input name="lastName" label="Last Name" handleChange={handleChange} autoFocus half />
+                                    <Input name="lastName" label="Last Name" handleChange={handleChange} half />
                                 </>
                             )
                         }
@@ -49,8 +57,8 @@ const Auth = () => {
                         { isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />}
                     </Grid>
                     <GoogleLogin
-                        onSuccess={(response) => console.log(response)}
-                        onError={() => console.log('Error')}
+                        onSuccess={googleSuccess}
+                        onError={googleError}
                         render={(renderProps => (
                             <Button 
                                 className={classes.googleButton} 
@@ -67,7 +75,7 @@ const Auth = () => {
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
-                    <Grid container justify="flex-end">
+                    <Grid container justifyContent="flex-end">
                         <Grid item>
                             <Button onClick={switchMode}>
                                 {isSignup ? 'Already have an account? Sign In' : 'Sign Up'}
