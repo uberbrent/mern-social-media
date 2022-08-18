@@ -11,9 +11,9 @@ import App from './App';
 import './index.css'
 import { requirePropFactory } from '@material-ui/core';
 
-
-dotenv.config();
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
+dotenv.config();
+console.log(process.env.PUBLIC_GOOGLE_OAUTH);
 
 ReactDOM.render(
     <Provider store={store}>
