@@ -9,7 +9,6 @@ import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 
 
-console.log(process.env.PUBLIC_GOOGLE_OAUTH);
 const App = () => {
 
     return (
